@@ -27,6 +27,8 @@
 		ECFE3F6B288ECC4D00150699 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ECFE3F6A288ECC4D00150699 /* RealmSwift */; };
 		ECFE3F6D288ECC7300150699 /* TabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F6C288ECC7300150699 /* TabbarItem.swift */; };
 		ECFE3F6F288ECC8200150699 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F6E288ECC8200150699 /* TabbarController.swift */; };
+		ECFE3F72288EF65B00150699 /* ViewPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F71288EF65B00150699 /* ViewPresentable.swift */; };
+		ECFE3F75288EF6C900150699 /* NoticeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F74288EF6C900150699 /* NoticeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,8 @@
 		ECFE3F5C288ECBA200150699 /* NoticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewModel.swift; sourceTree = "<group>"; };
 		ECFE3F6C288ECC7300150699 /* TabbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarItem.swift; sourceTree = "<group>"; };
 		ECFE3F6E288ECC8200150699 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
+		ECFE3F71288EF65B00150699 /* ViewPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPresentable.swift; sourceTree = "<group>"; };
+		ECFE3F74288EF6C900150699 /* NoticeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,10 +109,10 @@
 		ECFE3F3E288EC97C00150699 /* Presentaion */ = {
 			isa = PBXGroup;
 			children = (
+				ECFE3F3F288EC98200150699 /* Tabbar */,
+				ECFE3F40288EC98B00150699 /* Notice */,
 				ECFE3F42288EC9C900150699 /* Cafeteria */,
 				ECFE3F41288EC99400150699 /* Favorite */,
-				ECFE3F40288EC98B00150699 /* Notice */,
-				ECFE3F3F288EC98200150699 /* Tabbar */,
 			);
 			path = Presentaion;
 			sourceTree = "<group>";
@@ -125,6 +129,7 @@
 		ECFE3F40288EC98B00150699 /* Notice */ = {
 			isa = PBXGroup;
 			children = (
+				ECFE3F73288EF6C100150699 /* Cell */,
 				ECFE3F5A288ECB9000150699 /* View */,
 				ECFE3F5B288ECB9800150699 /* ViewModel */,
 			);
@@ -161,6 +166,7 @@
 		ECFE3F44288EC9F500150699 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				ECFE3F70288EF65000150699 /* Protocol */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -214,6 +220,22 @@
 				ECFE3F5C288ECBA200150699 /* NoticeViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		ECFE3F70288EF65000150699 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				ECFE3F71288EF65B00150699 /* ViewPresentable.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		ECFE3F73288EF6C100150699 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				ECFE3F74288EF6C900150699 /* NoticeTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,6 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECFE3F72288EF65B00150699 /* ViewPresentable.swift in Sources */,
 				ECFE3F2A288EC91D00150699 /* AppDelegate.swift in Sources */,
 				ECFE3F5D288ECBA200150699 /* NoticeViewModel.swift in Sources */,
 				ECFE3F46288ECABA00150699 /* CafeteriaView.swift in Sources */,
@@ -306,6 +329,7 @@
 				ECFE3F2C288EC91D00150699 /* SceneDelegate.swift in Sources */,
 				ECFE3F4B288ECAEF00150699 /* FavoriteView.swift in Sources */,
 				ECFE3F4D288ECAF700150699 /* FavoriteViewController.swift in Sources */,
+				ECFE3F75288EF6C900150699 /* NoticeTableViewCell.swift in Sources */,
 				ECFE3F48288ECADB00150699 /* CafeteriaViewController.swift in Sources */,
 				ECFE3F51288ECB0700150699 /* NoticeViewController.swift in Sources */,
 				ECFE3F54288ECB5E00150699 /* CafeteriaViewModel.swift in Sources */,
