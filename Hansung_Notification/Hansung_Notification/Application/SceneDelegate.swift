@@ -15,8 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-//        window?.rootViewController = UINavigationController(rootViewController: TabBarController.instanceFromNib())
-        let navigationController = window?.rootViewController as? UINavigationController
+        window?.rootViewController = UINavigationController(rootViewController: TabBarController())
         self.window?.backgroundColor = .white
         window?.makeKeyAndVisible()
     }
