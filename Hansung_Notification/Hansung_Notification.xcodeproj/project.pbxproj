@@ -32,6 +32,7 @@
 		ECFE3F77288FB4F400150699 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ECFE3F76288FB4F400150699 /* GoogleService-Info.plist */; };
 		ECFE3F7A288FB57C00150699 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = ECFE3F79288FB57C00150699 /* FirebaseAnalytics */; };
 		ECFE3F7C288FB57C00150699 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = ECFE3F7B288FB57C00150699 /* FirebaseAuth */; };
+		ECFE3F7E288FB7AB00150699 /* BaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F7D288FB7AB00150699 /* BaseProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		ECFE3F71288EF65B00150699 /* ViewPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPresentable.swift; sourceTree = "<group>"; };
 		ECFE3F74288EF6C900150699 /* NoticeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewCell.swift; sourceTree = "<group>"; };
 		ECFE3F76288FB4F400150699 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ECFE3F7D288FB7AB00150699 /* BaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				ECFE3F71288EF65B00150699 /* ViewPresentable.swift */,
+				ECFE3F7D288FB7AB00150699 /* BaseProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				ECFE3F4D288ECAF700150699 /* FavoriteViewController.swift in Sources */,
 				ECFE3F75288EF6C900150699 /* NoticeTableViewCell.swift in Sources */,
 				ECFE3F48288ECADB00150699 /* CafeteriaViewController.swift in Sources */,
+				ECFE3F7E288FB7AB00150699 /* BaseProtocol.swift in Sources */,
 				ECFE3F51288ECB0700150699 /* NoticeViewController.swift in Sources */,
 				ECFE3F54288ECB5E00150699 /* CafeteriaViewModel.swift in Sources */,
 				ECFE3F59288ECB8900150699 /* FavoriteViewModel.swift in Sources */,

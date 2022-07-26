@@ -7,7 +7,9 @@
 
 import UIKit
 
-final class NoticeViewController: UIViewController {
+protocol NoticeProtocol: DelegationProtocol {}
+
+final class NoticeViewController: UIViewController, NoticeProtocol {
     
     private let noticeView = NoticeView()
     
@@ -21,7 +23,7 @@ final class NoticeViewController: UIViewController {
 
     }
     
-    private func assignDelegation() {
+    func assignDelegation() {
         noticeView.tableView.delegate = self
         noticeView.tableView.dataSource = self
     }
