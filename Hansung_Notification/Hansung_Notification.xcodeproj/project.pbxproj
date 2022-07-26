@@ -29,6 +29,9 @@
 		ECFE3F6F288ECC8200150699 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F6E288ECC8200150699 /* TabbarController.swift */; };
 		ECFE3F72288EF65B00150699 /* ViewPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F71288EF65B00150699 /* ViewPresentable.swift */; };
 		ECFE3F75288EF6C900150699 /* NoticeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F74288EF6C900150699 /* NoticeTableViewCell.swift */; };
+		ECFE3F77288FB4F400150699 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ECFE3F76288FB4F400150699 /* GoogleService-Info.plist */; };
+		ECFE3F7A288FB57C00150699 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = ECFE3F79288FB57C00150699 /* FirebaseAnalytics */; };
+		ECFE3F7C288FB57C00150699 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = ECFE3F7B288FB57C00150699 /* FirebaseAuth */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +54,7 @@
 		ECFE3F6E288ECC8200150699 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		ECFE3F71288EF65B00150699 /* ViewPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPresentable.swift; sourceTree = "<group>"; };
 		ECFE3F74288EF6C900150699 /* NoticeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewCell.swift; sourceTree = "<group>"; };
+		ECFE3F76288FB4F400150699 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +64,10 @@
 			files = (
 				ECFE3F66288ECBF200150699 /* RxCocoa in Frameworks */,
 				ECFE3F60288ECBD100150699 /* Then in Frameworks */,
+				ECFE3F7A288FB57C00150699 /* FirebaseAnalytics in Frameworks */,
 				ECFE3F68288ECBF200150699 /* RxSwift in Frameworks */,
 				ECFE3F6B288ECC4D00150699 /* RealmSwift in Frameworks */,
+				ECFE3F7C288FB57C00150699 /* FirebaseAuth in Frameworks */,
 				ECFE3F63288ECBDD00150699 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,6 +99,7 @@
 				ECFE3F3E288EC97C00150699 /* Presentaion */,
 				ECFE3F44288EC9F500150699 /* Common */,
 				ECFE3F37288EC91E00150699 /* Info.plist */,
+				ECFE3F76288FB4F400150699 /* GoogleService-Info.plist */,
 			);
 			path = Hansung_Notification;
 			sourceTree = "<group>";
@@ -260,6 +267,8 @@
 				ECFE3F65288ECBF200150699 /* RxCocoa */,
 				ECFE3F67288ECBF200150699 /* RxSwift */,
 				ECFE3F6A288ECC4D00150699 /* RealmSwift */,
+				ECFE3F79288FB57C00150699 /* FirebaseAnalytics */,
+				ECFE3F7B288FB57C00150699 /* FirebaseAuth */,
 			);
 			productName = Hansung_Notification;
 			productReference = ECFE3F26288EC91D00150699 /* Hansung_Notification.app */;
@@ -294,6 +303,7 @@
 				ECFE3F61288ECBDD00150699 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				ECFE3F64288ECBF200150699 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				ECFE3F69288ECC4D00150699 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				ECFE3F78288FB57C00150699 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = ECFE3F27288EC91D00150699 /* Products */;
 			projectDirPath = "";
@@ -311,6 +321,7 @@
 			files = (
 				ECFE3F36288EC91E00150699 /* LaunchScreen.storyboard in Resources */,
 				ECFE3F33288EC91E00150699 /* Assets.xcassets in Resources */,
+				ECFE3F77288FB4F400150699 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,6 +586,14 @@
 				kind = branch;
 			};
 		};
+		ECFE3F78288FB57C00150699 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -602,6 +621,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ECFE3F69288ECC4D00150699 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		ECFE3F79288FB57C00150699 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ECFE3F78288FB57C00150699 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		ECFE3F7B288FB57C00150699 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ECFE3F78288FB57C00150699 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
