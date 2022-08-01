@@ -10,7 +10,13 @@ import UIKit
 import SnapKit
 import Then
 
+protocol FavoriteButtonProtocol: AnyObject {
+    func didTapFavoriteButton(tag: Int)
+}
+
 final class NoticeTableViewCell: UITableViewCell, ViewPresentable {
+    
+    weak var delegate: FavoriteButtonProtocol?
     
     static let identifier: String = "NoticeTableViewCell"
     
@@ -26,8 +32,8 @@ final class NoticeTableViewCell: UITableViewCell, ViewPresentable {
         $0.text = ""
     }
     
-    private lazy var starImage = UIImageView().then {
-        $0.image = UIImage(systemName: "star")
+    private lazy var favoriteButton = UIButton().then {
+        $0.setImage(UIImage(systemName: "star"), for: .normal)
         $0.tintColor = .gray
     }
     
@@ -56,8 +62,10 @@ final class NoticeTableViewCell: UITableViewCell, ViewPresentable {
     }
     
     func setupView() {
-        [verticalStackView, horizontalStackView, starImage].forEach {
-            addSubview($0)
+        favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped(sender:)), for: .touchUpInside)
+        
+        [verticalStackView, horizontalStackView, favoriteButton].forEach {
+            contentView.addSubview($0)
         }
         
         [dateLabel, departmentLabel].forEach {
@@ -73,7 +81,7 @@ final class NoticeTableViewCell: UITableViewCell, ViewPresentable {
         verticalStackView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().inset(20)
-            $0.trailing.equalTo(starImage.snp.leading).offset(-10)
+            $0.trailing.equalTo(favoriteButton.snp.leading).offset(-10)
         }
         
         horizontalStackView.snp.makeConstraints {
@@ -84,7 +92,7 @@ final class NoticeTableViewCell: UITableViewCell, ViewPresentable {
             $0.leading.equalTo(verticalStackView.snp.leading)
         }
         
-        starImage.snp.makeConstraints {
+        favoriteButton.snp.makeConstraints {
             $0.width.height.equalTo(30)
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().inset(20)
@@ -96,5 +104,14 @@ final class NoticeTableViewCell: UITableViewCell, ViewPresentable {
         titleLabel.text = viewModel.titleArray.value[indexPath.row]
         departmentLabel.text = viewModel.writerArray.value[indexPath.row]
         dateLabel.text = viewModel.dateArray.value[indexPath.row]
+        
+        let noticeData = Notice(isHeader: false, isNew: false, title: titleLabel.text ?? "", date: dateLabel.text ?? "", writer: departmentLabel.text ?? "", url: "")
+        
+        print(noticeData)
+    }
+    
+    @objc func favoriteButtonTapped(sender: UIButton) {
+        print("1")
+        self.delegate?.didTapFavoriteButton(tag: sender.tag)
     }
 }

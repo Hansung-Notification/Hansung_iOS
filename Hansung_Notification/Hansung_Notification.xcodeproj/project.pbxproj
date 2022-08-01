@@ -10,8 +10,9 @@
 		EC9EDE15289522B100855ED7 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9EDE14289522B100855ED7 /* ViewModelType.swift */; };
 		EC9EDE1728955A5300855ED7 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9EDE1628955A5300855ED7 /* NetworkResult.swift */; };
 		EC9EDE1928955A5B00855ED7 /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9EDE1828955A5B00855ED7 /* URLs.swift */; };
-		EC9EDE1B28955AA800855ED7 /* NoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9EDE1A28955AA800855ED7 /* NoticeManager.swift */; };
 		EC9EDE1D2897941200855ED7 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9EDE1C2897941200855ED7 /* Helper.swift */; };
+		EC9EDE202897A7FB00855ED7 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9EDE1F2897A7FB00855ED7 /* RealmManager.swift */; };
+		EC9EDE222897A83100855ED7 /* FavoriteNoticeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9EDE212897A83100855ED7 /* FavoriteNoticeList.swift */; };
 		ECFE3F2A288EC91D00150699 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F29288EC91D00150699 /* AppDelegate.swift */; };
 		ECFE3F2C288EC91D00150699 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F2B288EC91D00150699 /* SceneDelegate.swift */; };
 		ECFE3F33288EC91E00150699 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECFE3F32288EC91E00150699 /* Assets.xcassets */; };
@@ -47,8 +48,9 @@
 		EC9EDE14289522B100855ED7 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		EC9EDE1628955A5300855ED7 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		EC9EDE1828955A5B00855ED7 /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
-		EC9EDE1A28955AA800855ED7 /* NoticeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeManager.swift; sourceTree = "<group>"; };
 		EC9EDE1C2897941200855ED7 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		EC9EDE1F2897A7FB00855ED7 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		EC9EDE212897A83100855ED7 /* FavoriteNoticeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNoticeList.swift; sourceTree = "<group>"; };
 		ECFE3F26288EC91D00150699 /* Hansung_Notification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hansung_Notification.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECFE3F29288EC91D00150699 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECFE3F2B288EC91D00150699 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC9EDE1E2897A7EA00855ED7 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				EC9EDE1F2897A7FB00855ED7 /* RealmManager.swift */,
+				EC9EDE212897A83100855ED7 /* FavoriteNoticeList.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		ECFE3F1D288EC91D00150699 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +128,7 @@
 				ECFE3F3E288EC97C00150699 /* Presentaion */,
 				ECFE3F44288EC9F500150699 /* Common */,
 				ECFE3FB528902CD300150699 /* Network */,
+				EC9EDE1E2897A7EA00855ED7 /* Manager */,
 				ECFE3F37288EC91E00150699 /* Info.plist */,
 				ECFE3F76288FB4F400150699 /* GoogleService-Info.plist */,
 			);
@@ -273,7 +285,6 @@
 				ECFE3FB728902E3900150699 /* Model */,
 				EC9EDE1628955A5300855ED7 /* NetworkResult.swift */,
 				EC9EDE1828955A5B00855ED7 /* URLs.swift */,
-				EC9EDE1A28955AA800855ED7 /* NoticeManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -382,6 +393,7 @@
 				ECFE3F5D288ECBA200150699 /* NoticeViewModel.swift in Sources */,
 				EC9EDE1928955A5B00855ED7 /* URLs.swift in Sources */,
 				ECFE3F46288ECABA00150699 /* CafeteriaView.swift in Sources */,
+				EC9EDE222897A83100855ED7 /* FavoriteNoticeList.swift in Sources */,
 				ECFE3F6F288ECC8200150699 /* TabbarController.swift in Sources */,
 				ECFE3F2C288EC91D00150699 /* SceneDelegate.swift in Sources */,
 				ECFE3F4B288ECAEF00150699 /* FavoriteView.swift in Sources */,
@@ -390,7 +402,7 @@
 				ECFE3F75288EF6C900150699 /* NoticeTableViewCell.swift in Sources */,
 				EC9EDE1D2897941200855ED7 /* Helper.swift in Sources */,
 				ECFE3F48288ECADB00150699 /* CafeteriaViewController.swift in Sources */,
-				EC9EDE1B28955AA800855ED7 /* NoticeManager.swift in Sources */,
+				EC9EDE202897A7FB00855ED7 /* RealmManager.swift in Sources */,
 				ECFE3F7E288FB7AB00150699 /* BaseProtocol.swift in Sources */,
 				ECFE3F51288ECB0700150699 /* NoticeViewController.swift in Sources */,
 				ECFE3F54288ECB5E00150699 /* CafeteriaViewModel.swift in Sources */,
