@@ -90,4 +90,11 @@ final class NoticeTableViewCell: UITableViewCell, ViewPresentable {
             $0.trailing.equalToSuperview().inset(20)
         }
     }
+    
+    func updateCell(_ viewModel: NoticeViewModel, indexPath: IndexPath) {
+
+        titleLabel.text = viewModel.titleArray.value[indexPath.row]
+        departmentLabel.text = viewModel.writerArray.value[indexPath.row]
+        dateLabel.text = viewModel.dateArray.value[indexPath.row]
+    }
 }
