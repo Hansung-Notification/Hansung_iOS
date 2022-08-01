@@ -14,3 +14,7 @@ protocol DelegationProtocol {
 protocol TargetProtocol {
     func addTarget()
 }
+
+protocol BindProtocol {
+    func bind()
+}
