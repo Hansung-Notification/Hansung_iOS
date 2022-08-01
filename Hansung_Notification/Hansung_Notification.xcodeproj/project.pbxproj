@@ -16,6 +16,12 @@
 		EC9EDE252897F43500855ED7 /* WebKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9EDE242897F43500855ED7 /* WebKitView.swift */; };
 		EC9EDE272897F43C00855ED7 /* WebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9EDE262897F43C00855ED7 /* WebKitViewController.swift */; };
 		EC9EDE2A2897F75A00855ED7 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9EDE292897F75A00855ED7 /* WebKit.framework */; };
+		EC9EDE342898039500855ED7 /* PagerTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9EDE332898039500855ED7 /* PagerTab.swift */; };
+		EC9EDE362898045900855ED7 /* MondayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9EDE352898045900855ED7 /* MondayViewController.swift */; };
+		EC9EDE382898046200855ED7 /* TuesdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9EDE372898046200855ED7 /* TuesdayViewController.swift */; };
+		EC9EDE3A2898048200855ED7 /* WednesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9EDE392898048200855ED7 /* WednesViewController.swift */; };
+		EC9EDE3C2898048C00855ED7 /* ThursdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9EDE3B2898048C00855ED7 /* ThursdayViewController.swift */; };
+		EC9EDE3E2898049500855ED7 /* FridayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9EDE3D2898049500855ED7 /* FridayViewController.swift */; };
 		ECFE3F2A288EC91D00150699 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F29288EC91D00150699 /* AppDelegate.swift */; };
 		ECFE3F2C288EC91D00150699 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F2B288EC91D00150699 /* SceneDelegate.swift */; };
 		ECFE3F33288EC91E00150699 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECFE3F32288EC91E00150699 /* Assets.xcassets */; };
@@ -57,6 +63,12 @@
 		EC9EDE242897F43500855ED7 /* WebKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitView.swift; sourceTree = "<group>"; };
 		EC9EDE262897F43C00855ED7 /* WebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitViewController.swift; sourceTree = "<group>"; };
 		EC9EDE292897F75A00855ED7 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		EC9EDE332898039500855ED7 /* PagerTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerTab.swift; sourceTree = "<group>"; };
+		EC9EDE352898045900855ED7 /* MondayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MondayViewController.swift; sourceTree = "<group>"; };
+		EC9EDE372898046200855ED7 /* TuesdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuesdayViewController.swift; sourceTree = "<group>"; };
+		EC9EDE392898048200855ED7 /* WednesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WednesViewController.swift; sourceTree = "<group>"; };
+		EC9EDE3B2898048C00855ED7 /* ThursdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThursdayViewController.swift; sourceTree = "<group>"; };
+		EC9EDE3D2898049500855ED7 /* FridayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridayViewController.swift; sourceTree = "<group>"; };
 		ECFE3F26288EC91D00150699 /* Hansung_Notification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hansung_Notification.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECFE3F29288EC91D00150699 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECFE3F2B288EC91D00150699 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +140,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EC9EDE402898088D00855ED7 /* Week */ = {
+			isa = PBXGroup;
+			children = (
+				EC9EDE352898045900855ED7 /* MondayViewController.swift */,
+				EC9EDE372898046200855ED7 /* TuesdayViewController.swift */,
+				EC9EDE392898048200855ED7 /* WednesViewController.swift */,
+				EC9EDE3B2898048C00855ED7 /* ThursdayViewController.swift */,
+				EC9EDE3D2898049500855ED7 /* FridayViewController.swift */,
+			);
+			path = Week;
+			sourceTree = "<group>";
+		};
 		ECFE3F1D288EC91D00150699 = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +196,7 @@
 		ECFE3F3E288EC97C00150699 /* Presentaion */ = {
 			isa = PBXGroup;
 			children = (
+				EC9EDE402898088D00855ED7 /* Week */,
 				ECFE3F3F288EC98200150699 /* Tabbar */,
 				EC9EDE232897F42400855ED7 /* WebKit */,
 				ECFE3F40288EC98B00150699 /* Notice */,
@@ -231,7 +256,6 @@
 			isa = PBXGroup;
 			children = (
 				ECFE3F70288EF65000150699 /* Protocol */,
-				EC9EDE1C2897941200855ED7 /* Helper.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -290,6 +314,8 @@
 		ECFE3F70288EF65000150699 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				EC9EDE1C2897941200855ED7 /* Helper.swift */,
+				EC9EDE332898039500855ED7 /* PagerTab.swift */,
 				ECFE3F71288EF65B00150699 /* ViewPresentable.swift */,
 				ECFE3F7D288FB7AB00150699 /* BaseProtocol.swift */,
 				EC9EDE14289522B100855ED7 /* ViewModelType.swift */,
@@ -414,22 +440,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC9EDE362898045900855ED7 /* MondayViewController.swift in Sources */,
 				ECFE3F72288EF65B00150699 /* ViewPresentable.swift in Sources */,
 				ECFE3F2A288EC91D00150699 /* AppDelegate.swift in Sources */,
 				ECFE3F5D288ECBA200150699 /* NoticeViewModel.swift in Sources */,
 				EC9EDE1928955A5B00855ED7 /* URLs.swift in Sources */,
 				ECFE3F46288ECABA00150699 /* CafeteriaView.swift in Sources */,
+				EC9EDE3E2898049500855ED7 /* FridayViewController.swift in Sources */,
 				EC9EDE222897A83100855ED7 /* FavoriteNoticeList.swift in Sources */,
 				ECFE3F6F288ECC8200150699 /* TabbarController.swift in Sources */,
+				EC9EDE342898039500855ED7 /* PagerTab.swift in Sources */,
 				ECFE3F2C288EC91D00150699 /* SceneDelegate.swift in Sources */,
 				EC9EDE272897F43C00855ED7 /* WebKitViewController.swift in Sources */,
 				ECFE3F4B288ECAEF00150699 /* FavoriteView.swift in Sources */,
+				EC9EDE3A2898048200855ED7 /* WednesViewController.swift in Sources */,
+				EC9EDE382898046200855ED7 /* TuesdayViewController.swift in Sources */,
 				ECFE3F4D288ECAF700150699 /* FavoriteViewController.swift in Sources */,
 				EC9EDE15289522B100855ED7 /* ViewModelType.swift in Sources */,
 				ECFE3F75288EF6C900150699 /* NoticeTableViewCell.swift in Sources */,
 				EC9EDE1D2897941200855ED7 /* Helper.swift in Sources */,
 				ECFE3F48288ECADB00150699 /* CafeteriaViewController.swift in Sources */,
 				EC9EDE202897A7FB00855ED7 /* RealmManager.swift in Sources */,
+				EC9EDE3C2898048C00855ED7 /* ThursdayViewController.swift in Sources */,
 				ECFE3F7E288FB7AB00150699 /* BaseProtocol.swift in Sources */,
 				ECFE3F51288ECB0700150699 /* NoticeViewController.swift in Sources */,
 				ECFE3F54288ECB5E00150699 /* CafeteriaViewModel.swift in Sources */,
