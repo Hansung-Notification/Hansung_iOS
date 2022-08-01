@@ -62,4 +62,10 @@ extension NoticeViewController: UITableViewDataSource {
  
         return cell
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = WebKitViewController()
+        
+        self.present(vc, animated: true)
+    }
 }
