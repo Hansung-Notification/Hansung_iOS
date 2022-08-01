@@ -33,7 +33,7 @@ final class NoticeViewController: UIViewController, NoticeProtocol {
     }
     
     func bind() {        
-        viewModel.titleArray.bind { [weak self] _ in
+        viewModel.noticeData.bind { [weak self] _ in
             guard let self = self else { return }
             
             self.noticeView.tableView.reloadData()

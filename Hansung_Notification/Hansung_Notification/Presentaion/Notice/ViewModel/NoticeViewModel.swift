@@ -20,12 +20,12 @@ final class NoticeViewModel: ViewModelType {
     
     var titleArray: Helper<[String]> = Helper([])
     var writerArray: Helper<[String]> = Helper([])
-    var urlArray: [String] = []
+    var urlArray: Helper<[String]> = Helper([])
     var dateArray: Helper<[String]> = Helper([])
     var isHeaderArray: [Bool] = []
     var isNewArray: [Bool] = []
     
-    var noticeData: Helper<[Notice]> = Helper([])
+    var noticeData: Helper<[NoticeData]> = Helper([])
  
 
     struct Input {
@@ -33,10 +33,10 @@ final class NoticeViewModel: ViewModelType {
     }
     
     struct Output {
-        let successNoticeModel: Observable<[Notice]>
+        let successNoticeModel: Observable<[NoticeData]>
     }
     
-    let successNoticeModel = BehaviorRelay<[Notice]>(value: [])
+    let successNoticeModel = BehaviorRelay<[NoticeData]>(value: [])
     
     func transform(input: Input) -> Output {
         input.requestNoticeEvent.emit { [weak self] _ in
@@ -47,51 +47,60 @@ final class NoticeViewModel: ViewModelType {
         
         return Output(successNoticeModel: successNoticeModel.asObservable())
     }
-    
-   
 }
 
 extension NoticeViewModel {
     func getNoticeData() {
         
-        let baseURL = URLs.baseURL
+        let noticeURL = URLs.baseURL + URLs.noticeURL
  
-        AF.request(baseURL).responseString { (response) in
+        AF.request(noticeURL).responseString { (response) in
                     guard let html = response.value else {
                         return
                     }
                     do {
                         let doc: Document = try SwiftSoup.parse(html)
+                        
+                        let docGetElementsTag = try doc.getElementsByTag("tbody").first!
+                        
+                        let useableDoc = try docGetElementsTag.getElementsByTag("tr")
 
-                        let title: Elements = try doc.select(".td-subject")
+                        let title: Elements = try useableDoc.select(".td-subject")
                         for element in title {
                             let titleData = try element.select("strong").text()
                             self.titleArray.value.append(titleData)
                         }
-
-                        let writer: Elements = try doc.select(".td-write")
+                        
+    
+                        let writer: Elements = try useableDoc.select(".td-write")
                 
                         for element in writer {
                             let writeData = try element.select("td").text()
                             self.writerArray.value.append(writeData)
                         }
 
-                        let date: Elements = try doc.select(".td-date")
+                        let date: Elements = try useableDoc.select(".td-date")
                         for element in date {
                             let dateData = try element.select("td").text()
                             self.dateArray.value.append(dateData)
                             
                         }
                         
-                        let new: Elements = try doc.select(".new")
-                        for element in new {
-                            let newData = try element.empty()
-
+                        let url: Elements = try useableDoc.select("a[href]")
+                        for element in url {
+                            let urlData = try element.attr("href")
+                            self.urlArray.value.append(urlData)
                         }
                         
+                        for ((titleData, urlData), (writerData, dateData)) in zip(zip(self.titleArray.value, self.urlArray.value), zip(self.writerArray.value, self.dateArray.value)) {
+                            let data = NoticeData(isHeader: false, isNew: false, title: titleData, date: dateData, writer: writerData, url: urlData)
+                            
+                            self.noticeData.value.append(data)
+                        }
                     } catch {
                         print("crawl error")
-                    }
-                }
+            }
+        }
     }
 }
+

@@ -101,17 +101,14 @@ final class NoticeTableViewCell: UITableViewCell, ViewPresentable {
     
     func updateCell(_ viewModel: NoticeViewModel, indexPath: IndexPath) {
 
-        titleLabel.text = viewModel.titleArray.value[indexPath.row]
-        departmentLabel.text = viewModel.writerArray.value[indexPath.row]
-        dateLabel.text = viewModel.dateArray.value[indexPath.row]
-        
-        let noticeData = Notice(isHeader: false, isNew: false, title: titleLabel.text ?? "", date: dateLabel.text ?? "", writer: departmentLabel.text ?? "", url: "")
-        
-        print(noticeData)
+        let value = viewModel.noticeData.value[indexPath.row]
+        titleLabel.text = value.title
+        departmentLabel.text = value.writer
+        dateLabel.text = value.date
+    
     }
     
     @objc func favoriteButtonTapped(sender: UIButton) {
-        print("1")
         self.delegate?.didTapFavoriteButton(tag: sender.tag)
     }
 }
