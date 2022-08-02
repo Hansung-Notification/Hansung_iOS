@@ -10,15 +10,28 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol NoticeProtocol: DelegationProtocol, BindProtocol {}
+protocol NoticeProtocol: BindProtocol {}
 
 final class NoticeViewController: UIViewController, NoticeProtocol {
     
     private let noticeView = NoticeView()
+    private var viewModel: NoticeViewModel
     
     private let disposeBag = DisposeBag()
     
-    private let viewModel = NoticeViewModel()
+    private lazy var input = NoticeViewModel.Input(requestNoticeEvent: requestNoticeData.asSignal())
+    
+    private let requestNoticeData = PublishRelay<Void>()
+    
+    private lazy var output = viewModel.transform(input: input)
+    init(viewModel: NoticeViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         self.view = noticeView
@@ -26,46 +39,35 @@ final class NoticeViewController: UIViewController, NoticeProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.getNoticeData()
-
-        assignDelegation()
         bind()
     }
     
-    func bind() {        
-        viewModel.noticeData.bind { [weak self] _ in
-            guard let self = self else { return }
-            
-            self.noticeView.tableView.reloadData()
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.requestNoticeData.accept(())
     }
     
-    
-    func assignDelegation() {
-        noticeView.tableView.delegate = self
-        noticeView.tableView.dataSource = self
+    func bind() {
+        output.successNoticeModel.drive(noticeView.tableView.rx.items(cellIdentifier: NoticeTableViewCell.identifier, cellType: NoticeTableViewCell.self)) {
+            (row, element, cell) in
+            cell.updateCell(notice: element)
+        }.disposed(by: disposeBag)
+        
+        noticeView.tableView.rx.itemSelected
+            .bind { [weak self] indexPath in
+                guard let self = self else { return }
+                self.presentWebView()
+            }.disposed(by: disposeBag)
+        
+        noticeView.searchButton.rx.tap.bind {
+            self.noticeView.searchBar.isHidden = true
+        }.disposed(by: disposeBag)
     }
 }
 
-extension NoticeViewController: UITableViewDelegate {}
-
-extension NoticeViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.titleArray.value.count
-        
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: NoticeTableViewCell.identifier, for: indexPath) as? NoticeTableViewCell else { return UITableViewCell() }
-        
-        cell.updateCell(viewModel, indexPath: indexPath)
- 
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = WebKitViewController()
-        
-        self.present(vc, animated: true)
+extension NoticeViewController {
+    private func presentWebView() {
+        let webView = WebKitViewController()
+        self.present(webView, animated: true)
     }
 }
