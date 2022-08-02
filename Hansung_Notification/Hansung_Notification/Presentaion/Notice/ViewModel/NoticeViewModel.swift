@@ -22,8 +22,8 @@ final class NoticeViewModel: ViewModelType {
     var writerArray: Helper<[String]> = Helper([])
     var urlArray: Helper<[String]> = Helper([])
     var dateArray: Helper<[String]> = Helper([])
-    var isHeaderArray: [Bool] = []
-    var isNewArray: [Bool] = []
+    var isHeaderArray: Helper<[Bool]> = Helper([])
+    var isNewArray: Helper<[Bool]> = Helper([])
     
     var noticeData: Helper<[NoticeData]> = Helper([])
  
@@ -78,12 +78,33 @@ extension NoticeViewModel {
                             let writeData = try element.select("td").text()
                             self.writerArray.value.append(writeData)
                         }
-
+                        
+                        let new: Elements = try useableDoc.select(".td-subject")
+                        
+                        for element in new {
+                            let isNewData = try !element.select(".new").isEmpty()
+                            self.isNewArray.value.append(isNewData)
+                        }
+                        
+                        let num: Elements = try useableDoc.select(".td-num")
+                        for element in num {
+                            let numberData = try element.text()
+                            let data: Bool = check(string: numberData)
+                            self.isHeaderArray.value.append(data)
+                        }
+                        
+                        func check(string: String) -> Bool {
+                            if string.contains("8") || string.contains("9") || string.contains("0") {
+                                return false
+                            } else {
+                                return true
+                            }
+                        }
+                        
                         let date: Elements = try useableDoc.select(".td-date")
                         for element in date {
                             let dateData = try element.select("td").text()
                             self.dateArray.value.append(dateData)
-                            
                         }
                         
                         let url: Elements = try useableDoc.select("a[href]")
@@ -92,11 +113,14 @@ extension NoticeViewModel {
                             self.urlArray.value.append(urlData)
                         }
                         
-                        for ((titleData, urlData), (writerData, dateData)) in zip(zip(self.titleArray.value, self.urlArray.value), zip(self.writerArray.value, self.dateArray.value)) {
-                            let data = NoticeData(isHeader: false, isNew: false, title: titleData, date: dateData, writer: writerData, url: urlData)
+                        for ((((titleData, urlData), (writerData, dateData)), isNewData), isHeaderData) in zip(zip(
+                            zip(zip(self.titleArray.value, self.urlArray.value), zip(self.writerArray.value, self.dateArray.value)), self.isNewArray.value), self.isHeaderArray.value) {
+                            let data = NoticeData(isHeader: isHeaderData, isNew: isNewData, title: titleData, date: dateData, writer: writerData, url: urlData)
                             
                             self.noticeData.value.append(data)
                         }
+                        
+                        dump(self.noticeData.value)
                     } catch {
                         print("crawl error")
             }

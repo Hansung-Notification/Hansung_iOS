@@ -32,6 +32,10 @@ final class NoticeTableViewCell: UITableViewCell, ViewPresentable {
         $0.text = ""
     }
     
+    private lazy var newLabel = UILabel().then {
+        $0.text = "new!"
+    }
+    
     private lazy var favoriteButton = UIButton().then {
         $0.setImage(UIImage(systemName: "star"), for: .normal)
         $0.tintColor = .gray
@@ -68,7 +72,7 @@ final class NoticeTableViewCell: UITableViewCell, ViewPresentable {
             contentView.addSubview($0)
         }
         
-        [dateLabel, departmentLabel].forEach {
+        [dateLabel, newLabel, departmentLabel].forEach {
             horizontalStackView.addArrangedSubview($0)
         }
         
@@ -106,6 +110,17 @@ final class NoticeTableViewCell: UITableViewCell, ViewPresentable {
         departmentLabel.text = value.writer
         dateLabel.text = value.date
     
+        if value.isNew {
+            newLabel.isHidden = false
+        } else {
+            newLabel.isHidden = true
+        }
+        
+        if value.isHeader {
+            contentView.backgroundColor = .red
+        } else {
+            contentView.backgroundColor = .white
+        }
     }
     
     @objc func favoriteButtonTapped(sender: UIButton) {
