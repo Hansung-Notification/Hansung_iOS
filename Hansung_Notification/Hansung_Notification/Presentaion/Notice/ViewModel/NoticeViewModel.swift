@@ -11,46 +11,41 @@ import RxSwift
 import RxCocoa
 import Alamofire
 import SwiftSoup
-import SwiftUI
 
 final class NoticeViewModel: ViewModelType {
     
-    
-    var disposeBag = DisposeBag()
-    
-    var titleArray: Helper<[String]> = Helper([])
-    var writerArray: Helper<[String]> = Helper([])
-    var urlArray: Helper<[String]> = Helper([])
-    var dateArray: Helper<[String]> = Helper([])
-    var isHeaderArray: Helper<[Bool]> = Helper([])
-    var isNewArray: Helper<[Bool]> = Helper([])
-    
-    var noticeData: Helper<[NoticeData]> = Helper([])
- 
-
     struct Input {
         let requestNoticeEvent: Signal<Void>
     }
     
     struct Output {
-        let successNoticeModel: Observable<[NoticeData]>
+        let successNoticeModel: Driver<[NoticeData]>
     }
     
-    let successNoticeModel = BehaviorRelay<[NoticeData]>(value: [])
+    private let successNoticeModel = BehaviorRelay<[NoticeData]>(value: [])
     
+    var disposeBag = DisposeBag()
+    private var titleArray: Helper<[String]> = Helper([])
+    private var writerArray: Helper<[String]> = Helper([])
+    private var urlArray: Helper<[String]> = Helper([])
+    private var dateArray: Helper<[String]> = Helper([])
+    private var isHeaderArray: Helper<[Bool]> = Helper([])
+    private var isNewArray: Helper<[Bool]> = Helper([])
+    private var noticeData: Helper<[NoticeData]> = Helper([])
+
     func transform(input: Input) -> Output {
         input.requestNoticeEvent.emit { [weak self] _ in
             guard let self = self else { return }
-            self.successNoticeModel.accept(self.noticeData.value)
-            
-        }.disposed(by: disposeBag)
+            self.getNoticeData()
+        }
+        .disposed(by: disposeBag)
         
-        return Output(successNoticeModel: successNoticeModel.asObservable())
+        return Output(successNoticeModel: successNoticeModel.asDriver())
     }
 }
 
 extension NoticeViewModel {
-    func getNoticeData() {
+    private func getNoticeData() {
         
         let noticeURL = URLs.baseURL + URLs.noticeURL
  
@@ -70,8 +65,7 @@ extension NoticeViewModel {
                             let titleData = try element.select("strong").text()
                             self.titleArray.value.append(titleData)
                         }
-                        
-    
+                    
                         let writer: Elements = try useableDoc.select(".td-write")
                 
                         for element in writer {
@@ -118,9 +112,8 @@ extension NoticeViewModel {
                             let data = NoticeData(isHeader: isHeaderData, isNew: isNewData, title: titleData, date: dateData, writer: writerData, url: urlData)
                             
                             self.noticeData.value.append(data)
+                            self.successNoticeModel.accept(self.noticeData.value)
                         }
-                        
-                        dump(self.noticeData.value)
                     } catch {
                         print("crawl error")
             }
