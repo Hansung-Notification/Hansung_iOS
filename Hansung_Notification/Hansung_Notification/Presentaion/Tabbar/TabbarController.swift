@@ -19,7 +19,7 @@ final class TabBarController: UITabBarController {
     
         setTabBarAppearance()
         setTabBarItems()
-        navigationController?.navigationBar.isHidden = true
+//        navigationController?.navigationBar.isHidden = true
     }
 
     override func viewDidLayoutSubviews() {
@@ -54,7 +54,7 @@ extension TabBarController {
 
     private func setTabBarItems() {
         tabs = [
-            NoticeViewController(), CafeteriaViewController(), FavoriteViewController()
+            NoticeViewController(viewModel: NoticeViewModel()), CafeteriaViewController(), FavoriteViewController()
         ]
 
         TabBarItem.allCases.forEach {
