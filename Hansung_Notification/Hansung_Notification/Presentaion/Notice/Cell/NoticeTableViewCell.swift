@@ -20,38 +20,29 @@ final class NoticeTableViewCell: UITableViewCell, ViewPresentable {
     
     static let identifier: String = "NoticeTableViewCell"
     
-    private lazy var titleLabel = UILabel().then {
+    lazy var titleLabel = UILabel().then {
         $0.text = "2023학년도 학석사연계과정 합격자 발표"
     }
     
     private lazy var dateLabel = UILabel().then {
-        $0.text = "2022.06.24 대학원 교학팀"
+        $0.font = UIFont.systemFont(ofSize: 15)
+        $0.textColor = .systemGray
     }
     
-    private lazy var departmentLabel = UILabel().then {
-        $0.text = ""
+    private lazy var writerLabel = UILabel().then {
+        $0.font = UIFont.italicSystemFont(ofSize: 15)
+        $0.textColor = .systemGray
     }
     
     private lazy var newLabel = UILabel().then {
         $0.text = "new!"
+        $0.font = UIFont.systemFont(ofSize: 15)
+        $0.textColor = .systemGray
     }
     
     private lazy var favoriteButton = UIButton().then {
         $0.setImage(UIImage(systemName: "star"), for: .normal)
         $0.tintColor = .gray
-    }
-    
-    private lazy var verticalStackView = UIStackView().then {
-        $0.alignment = .center
-        $0.axis = .vertical
-        $0.spacing = 5
-    }
-    
-    private lazy var horizontalStackView = UIStackView().then {
-        $0.alignment = .leading
-        $0.axis = .horizontal
-        $0.distribution = .equalSpacing
-        $0.spacing = 0
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -68,55 +59,53 @@ final class NoticeTableViewCell: UITableViewCell, ViewPresentable {
     func setupView() {
         favoriteButton.addTarget(self, action: #selector(favoriteButtonTapped(sender:)), for: .touchUpInside)
         
-        [verticalStackView, horizontalStackView, favoriteButton].forEach {
+        [dateLabel, newLabel, writerLabel, favoriteButton, titleLabel].forEach {
             contentView.addSubview($0)
-        }
-        
-        [dateLabel, newLabel, departmentLabel].forEach {
-            horizontalStackView.addArrangedSubview($0)
-        }
-        
-        [titleLabel, horizontalStackView].forEach {
-            verticalStackView.addArrangedSubview($0)
         }
     }
 
     func setupConstraints() {
-        verticalStackView.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().inset(20)
-            $0.trailing.equalTo(favoriteButton.snp.leading).offset(-10)
-        }
-        
-        horizontalStackView.snp.makeConstraints {
-            $0.leading.equalTo(verticalStackView.snp.leading)
-        }
-        
         titleLabel.snp.makeConstraints {
-            $0.leading.equalTo(verticalStackView.snp.leading)
+            $0.top.equalToSuperview().inset(30)
+            $0.leading.equalToSuperview().inset(20)
+            $0.trailing.equalTo(favoriteButton.snp.leading).inset(10)
+        }
+        
+        dateLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(5)
+            $0.leading.equalTo(titleLabel.snp.leading)
+        }
+        
+        writerLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(5)
+            $0.leading.equalTo(dateLabel.snp.trailing).offset(3)
+        }
+        
+        newLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(5)
+            $0.leading.equalTo(writerLabel.snp.trailing).offset(3)
         }
         
         favoriteButton.snp.makeConstraints {
-            $0.width.height.equalTo(30)
             $0.centerY.equalToSuperview()
-            $0.trailing.equalToSuperview().inset(20)
+            $0.width.height.equalTo(40)
+            $0.trailing.equalToSuperview().inset(10)
         }
     }
     
-    func updateCell(_ viewModel: NoticeViewModel, indexPath: IndexPath) {
-
-        let value = viewModel.noticeData.value[indexPath.row]
-        titleLabel.text = value.title
-        departmentLabel.text = value.writer
-        dateLabel.text = value.date
+    func updateCell(notice: NoticeData) {
+        titleLabel.text = notice.title
+        writerLabel.text = notice.writer
+        dateLabel.text = notice.date
     
-        if value.isNew {
+        // 코드 리팩토링
+        if notice.isNew {
             newLabel.isHidden = false
         } else {
             newLabel.isHidden = true
         }
         
-        if value.isHeader {
+        if notice.isHeader {
             contentView.backgroundColor = .red
         } else {
             contentView.backgroundColor = .white
