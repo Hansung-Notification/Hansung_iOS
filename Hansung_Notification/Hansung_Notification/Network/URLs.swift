@@ -10,4 +10,5 @@ import Foundation
 public enum URLs {
     public static let baseURL = "https://www.hansung.ac.kr"
     public static let noticeURL = "/hansung/8385/subview.do"
+    public static let searchURL = "/bbs/hansung/143/artclList.do"
 }

@@ -47,8 +47,8 @@ final class NoticeViewModel: ViewModelType {
 extension NoticeViewModel {
     private func getNoticeData() {
         
-        let noticeURL = URLs.baseURL + URLs.noticeURL
- 
+        let noticeURL = URLs.baseURL + URLs.noticeURL + "?page=\(3)"
+
         AF.request(noticeURL).responseString { (response) in
                     guard let html = response.value else {
                         return
@@ -59,6 +59,8 @@ extension NoticeViewModel {
                         let docGetElementsTag = try doc.getElementsByTag("tbody").first!
                         
                         let useableDoc = try docGetElementsTag.getElementsByTag("tr")
+                        
+                        print(doc)
 
                         let title: Elements = try useableDoc.select(".td-subject")
                         for element in title {
@@ -118,6 +120,10 @@ extension NoticeViewModel {
                         print("crawl error")
             }
         }
+    }
+    
+    func searchNotice(query: String) {
+        
     }
 }
 

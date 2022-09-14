@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC75A38428D21EAB00C9E9B8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = EC75A38328D21EAB00C9E9B8 /* SnapKit */; };
+		EC75A38728D21ECA00C9E9B8 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = EC75A38628D21ECA00C9E9B8 /* RxCocoa */; };
+		EC75A38928D21ECA00C9E9B8 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EC75A38828D21ECA00C9E9B8 /* RxSwift */; };
+		EC95B93728C5A13B00E7E832 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = EC95B93628C5A13B00E7E832 /* Then */; };
 		EC9EDE15289522B100855ED7 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9EDE14289522B100855ED7 /* ViewModelType.swift */; };
 		EC9EDE1728955A5300855ED7 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9EDE1628955A5300855ED7 /* NetworkResult.swift */; };
 		EC9EDE1928955A5B00855ED7 /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9EDE1828955A5B00855ED7 /* URLs.swift */; };
@@ -35,10 +39,6 @@
 		ECFE3F54288ECB5E00150699 /* CafeteriaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F53288ECB5E00150699 /* CafeteriaViewModel.swift */; };
 		ECFE3F59288ECB8900150699 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F58288ECB8900150699 /* FavoriteViewModel.swift */; };
 		ECFE3F5D288ECBA200150699 /* NoticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F5C288ECBA200150699 /* NoticeViewModel.swift */; };
-		ECFE3F60288ECBD100150699 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = ECFE3F5F288ECBD100150699 /* Then */; };
-		ECFE3F63288ECBDD00150699 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = ECFE3F62288ECBDD00150699 /* SnapKit */; };
-		ECFE3F66288ECBF200150699 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = ECFE3F65288ECBF200150699 /* RxCocoa */; };
-		ECFE3F68288ECBF200150699 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ECFE3F67288ECBF200150699 /* RxSwift */; };
 		ECFE3F6B288ECC4D00150699 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ECFE3F6A288ECC4D00150699 /* RealmSwift */; };
 		ECFE3F6D288ECC7300150699 /* TabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F6C288ECC7300150699 /* TabbarItem.swift */; };
 		ECFE3F6F288ECC8200150699 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F6E288ECC8200150699 /* TabbarController.swift */; };
@@ -98,16 +98,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC75A38728D21ECA00C9E9B8 /* RxCocoa in Frameworks */,
 				EC9EDE2A2897F75A00855ED7 /* WebKit.framework in Frameworks */,
-				ECFE3F66288ECBF200150699 /* RxCocoa in Frameworks */,
+				EC75A38928D21ECA00C9E9B8 /* RxSwift in Frameworks */,
 				ECFE3FB128902C1300150699 /* Alamofire in Frameworks */,
-				ECFE3F60288ECBD100150699 /* Then in Frameworks */,
 				ECFE3F7A288FB57C00150699 /* FirebaseAnalytics in Frameworks */,
-				ECFE3F68288ECBF200150699 /* RxSwift in Frameworks */,
+				EC95B93728C5A13B00E7E832 /* Then in Frameworks */,
 				ECFE3F6B288ECC4D00150699 /* RealmSwift in Frameworks */,
 				ECFE3F7C288FB57C00150699 /* FirebaseAuth in Frameworks */,
-				ECFE3F63288ECBDD00150699 /* SnapKit in Frameworks */,
 				ECFE3FB428902C2F00150699 /* SwiftSoup in Frameworks */,
+				EC75A38428D21EAB00C9E9B8 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,15 +366,15 @@
 			);
 			name = Hansung_Notification;
 			packageProductDependencies = (
-				ECFE3F5F288ECBD100150699 /* Then */,
-				ECFE3F62288ECBDD00150699 /* SnapKit */,
-				ECFE3F65288ECBF200150699 /* RxCocoa */,
-				ECFE3F67288ECBF200150699 /* RxSwift */,
 				ECFE3F6A288ECC4D00150699 /* RealmSwift */,
 				ECFE3F79288FB57C00150699 /* FirebaseAnalytics */,
 				ECFE3F7B288FB57C00150699 /* FirebaseAuth */,
 				ECFE3FB028902C1300150699 /* Alamofire */,
 				ECFE3FB328902C2F00150699 /* SwiftSoup */,
+				EC95B93628C5A13B00E7E832 /* Then */,
+				EC75A38328D21EAB00C9E9B8 /* SnapKit */,
+				EC75A38628D21ECA00C9E9B8 /* RxCocoa */,
+				EC75A38828D21ECA00C9E9B8 /* RxSwift */,
 			);
 			productName = Hansung_Notification;
 			productReference = ECFE3F26288EC91D00150699 /* Hansung_Notification.app */;
@@ -405,13 +405,13 @@
 			);
 			mainGroup = ECFE3F1D288EC91D00150699;
 			packageReferences = (
-				ECFE3F5E288ECBD100150699 /* XCRemoteSwiftPackageReference "Then" */,
-				ECFE3F61288ECBDD00150699 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				ECFE3F64288ECBF200150699 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				ECFE3F69288ECC4D00150699 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				ECFE3F78288FB57C00150699 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				ECFE3FAF28902C1200150699 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				ECFE3FB228902C2F00150699 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				EC95B93528C5A13A00E7E832 /* XCRemoteSwiftPackageReference "Then" */,
+				EC75A38228D21EAB00C9E9B8 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				EC75A38528D21ECA00C9E9B8 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = ECFE3F27288EC91D00150699 /* Products */;
 			projectDirPath = "";
@@ -678,15 +678,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		ECFE3F5E288ECBD100150699 /* XCRemoteSwiftPackageReference "Then" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/devxoul/Then.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
-			};
-		};
-		ECFE3F61288ECBDD00150699 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		EC75A38228D21EAB00C9E9B8 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -694,12 +686,20 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		ECFE3F64288ECBF200150699 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		EC75A38528D21ECA00C9E9B8 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 6.0.0;
+			};
+		};
+		EC95B93528C5A13A00E7E832 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
 			};
 		};
 		ECFE3F69288ECC4D00150699 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
@@ -737,25 +737,25 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		ECFE3F5F288ECBD100150699 /* Then */ = {
+		EC75A38328D21EAB00C9E9B8 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = ECFE3F5E288ECBD100150699 /* XCRemoteSwiftPackageReference "Then" */;
-			productName = Then;
-		};
-		ECFE3F62288ECBDD00150699 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = ECFE3F61288ECBDD00150699 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = EC75A38228D21EAB00C9E9B8 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		ECFE3F65288ECBF200150699 /* RxCocoa */ = {
+		EC75A38628D21ECA00C9E9B8 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = ECFE3F64288ECBF200150699 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = EC75A38528D21ECA00C9E9B8 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
-		ECFE3F67288ECBF200150699 /* RxSwift */ = {
+		EC75A38828D21ECA00C9E9B8 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = ECFE3F64288ECBF200150699 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = EC75A38528D21ECA00C9E9B8 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		EC95B93628C5A13B00E7E832 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC95B93528C5A13A00E7E832 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
 		};
 		ECFE3F6A288ECC4D00150699 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
