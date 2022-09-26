@@ -36,7 +36,7 @@
 		ECFE3F4D288ECAF700150699 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F4C288ECAF700150699 /* FavoriteViewController.swift */; };
 		ECFE3F4F288ECAFE00150699 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F4E288ECAFE00150699 /* NoticeView.swift */; };
 		ECFE3F51288ECB0700150699 /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F50288ECB0700150699 /* NoticeViewController.swift */; };
-		ECFE3F54288ECB5E00150699 /* CafeteriaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F53288ECB5E00150699 /* CafeteriaViewModel.swift */; };
+		ECFE3F54288ECB5E00150699 /* CafeteriaCrawlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F53288ECB5E00150699 /* CafeteriaCrawlManager.swift */; };
 		ECFE3F59288ECB8900150699 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F58288ECB8900150699 /* FavoriteViewModel.swift */; };
 		ECFE3F5D288ECBA200150699 /* NoticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3F5C288ECBA200150699 /* NoticeViewModel.swift */; };
 		ECFE3F6B288ECC4D00150699 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ECFE3F6A288ECC4D00150699 /* RealmSwift */; };
@@ -81,7 +81,7 @@
 		ECFE3F4C288ECAF700150699 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		ECFE3F4E288ECAFE00150699 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
 		ECFE3F50288ECB0700150699 /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
-		ECFE3F53288ECB5E00150699 /* CafeteriaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaViewModel.swift; sourceTree = "<group>"; };
+		ECFE3F53288ECB5E00150699 /* CafeteriaCrawlManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaCrawlManager.swift; sourceTree = "<group>"; };
 		ECFE3F58288ECB8900150699 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		ECFE3F5C288ECBA200150699 /* NoticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewModel.swift; sourceTree = "<group>"; };
 		ECFE3F6C288ECC7300150699 /* TabbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarItem.swift; sourceTree = "<group>"; };
@@ -238,7 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				ECFE3F55288ECB6100150699 /* View */,
-				ECFE3F52288ECB4F00150699 /* ViewModel */,
+				ECFE3F52288ECB4F00150699 /* CrawlManager */,
 			);
 			path = Cafeteria;
 			sourceTree = "<group>";
@@ -260,12 +260,12 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		ECFE3F52288ECB4F00150699 /* ViewModel */ = {
+		ECFE3F52288ECB4F00150699 /* CrawlManager */ = {
 			isa = PBXGroup;
 			children = (
-				ECFE3F53288ECB5E00150699 /* CafeteriaViewModel.swift */,
+				ECFE3F53288ECB5E00150699 /* CafeteriaCrawlManager.swift */,
 			);
-			path = ViewModel;
+			path = CrawlManager;
 			sourceTree = "<group>";
 		};
 		ECFE3F55288ECB6100150699 /* View */ = {
@@ -464,7 +464,7 @@
 				EC9EDE3C2898048C00855ED7 /* ThursdayViewController.swift in Sources */,
 				ECFE3F7E288FB7AB00150699 /* BaseProtocol.swift in Sources */,
 				ECFE3F51288ECB0700150699 /* NoticeViewController.swift in Sources */,
-				ECFE3F54288ECB5E00150699 /* CafeteriaViewModel.swift in Sources */,
+				ECFE3F54288ECB5E00150699 /* CafeteriaCrawlManager.swift in Sources */,
 				ECFE3F59288ECB8900150699 /* FavoriteViewModel.swift in Sources */,
 				ECFE3F6D288ECC7300150699 /* TabbarItem.swift in Sources */,
 				EC9EDE252897F43500855ED7 /* WebKitView.swift in Sources */,
