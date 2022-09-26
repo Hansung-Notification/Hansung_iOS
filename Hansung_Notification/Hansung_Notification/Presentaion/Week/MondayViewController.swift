@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 import SnapKit
 import Then
 
@@ -38,37 +39,33 @@ class MondayViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupConstraints()
-    CafeteriaCrawlManager.crawlCafeteria(vc: self)
+    CafeteriaCrawlManager.crawlCafeteria(viewController: self)
   }
 
   func setupConstraints() {
-    view.addSubview(dateLabel)
+    [dateLabel, typeLabel1, menuLabel1, typeLabel2, menuLabel2].forEach { view.addSubview($0) }
     dateLabel.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(10)
       make.left.equalToSuperview().offset(10)
     }
     
-    view.addSubview(typeLabel1)
     typeLabel1.snp.makeConstraints { make in
       make.top.equalTo(dateLabel.snp.bottom).offset(20)
       make.left.equalToSuperview().offset(10)
     }
     
-    view.addSubview(menuLabel1)
     menuLabel1.snp.makeConstraints { make in
       make.top.equalTo(typeLabel1.snp.bottom).offset(20)
       make.left.equalToSuperview().offset(10)
       make.right.equalToSuperview().offset(-10)
     }
     
-    view.addSubview(typeLabel2)
     typeLabel2.snp.makeConstraints { make in
       make.top.equalTo(menuLabel1.snp.bottom).offset(20)
       make.left.equalToSuperview().offset(10)
       make.right.equalToSuperview().offset(-10)
     }
     
-    view.addSubview(menuLabel2)
     menuLabel2.snp.makeConstraints { make in
       make.top.equalTo(typeLabel2.snp.bottom).offset(20)
       make.left.equalToSuperview().offset(10)
@@ -88,5 +85,3 @@ class MondayViewController: UIViewController {
 extension MondayViewController: PageComponentProtocol {
     var pageTitle: String { "월" }
 }
-
-

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 import SwiftSoup
 import Alamofire
 
@@ -14,7 +15,7 @@ struct CafeteriaCrawlManager {
   static var cafeteriaTypeArray = [String]()
   static var cafeteriaMenuArray = [String]()
   
-  static func crawlCafeteria(vc: MondayViewController) {
+  static func crawlCafeteria(viewController: MondayViewController) {
     let cafeteriaURL = URLs.baseURL + URLs.cafeteriaURL
     
     AF.request(cafeteriaURL).responseString { response in
@@ -46,7 +47,7 @@ struct CafeteriaCrawlManager {
             self.cafeteriaMenuArray.append(menuString)
           }
         }
-        vc.setCafeteriaData()
+        viewController.setCafeteriaData()
       } catch {
         print("cafeteria crawl error")
       }
