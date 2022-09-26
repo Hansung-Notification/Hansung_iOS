@@ -7,25 +7,79 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 class MondayViewController: UIViewController {
+  
+  private let dateLabel = UILabel().then {
+    $0.font = UIFont.systemFont(ofSize: 15)
+  }
+  
+  private let typeLabel1 = UILabel().then {
+    $0.font = UIFont.systemFont(ofSize: 20)
+  }
+  
+  private let menuLabel1 = UILabel().then {
+    $0.font = UIFont.systemFont(ofSize: 15)
+    $0.numberOfLines = 0
+    $0.sizeToFit()
+  }
+  
+  private let typeLabel2 = UILabel().then {
+    $0.font = UIFont.systemFont(ofSize: 20)
+  }
+  
+  private let menuLabel2 = UILabel().then {
+    $0.font = UIFont.systemFont(ofSize: 15)
+    $0.numberOfLines = 0
+    $0.sizeToFit()
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    setupConstraints()
+    CafeteriaCrawlManager.crawlCafeteria(viewController: self)
+  }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        view.backgroundColor = .red
-        // Do any additional setup after loading the view.
+  func setupConstraints() {
+    [dateLabel, typeLabel1, menuLabel1, typeLabel2, menuLabel2].forEach { view.addSubview($0) }
+    dateLabel.snp.makeConstraints { make in
+      make.top.equalToSuperview().offset(10)
+      make.left.equalToSuperview().offset(10)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    typeLabel1.snp.makeConstraints { make in
+      make.top.equalTo(dateLabel.snp.bottom).offset(20)
+      make.left.equalToSuperview().offset(10)
     }
-    */
+    
+    menuLabel1.snp.makeConstraints { make in
+      make.top.equalTo(typeLabel1.snp.bottom).offset(20)
+      make.left.equalToSuperview().offset(10)
+      make.right.equalToSuperview().offset(-10)
+    }
+    
+    typeLabel2.snp.makeConstraints { make in
+      make.top.equalTo(menuLabel1.snp.bottom).offset(20)
+      make.left.equalToSuperview().offset(10)
+      make.right.equalToSuperview().offset(-10)
+    }
+    
+    menuLabel2.snp.makeConstraints { make in
+      make.top.equalTo(typeLabel2.snp.bottom).offset(20)
+      make.left.equalToSuperview().offset(10)
+      make.right.equalToSuperview().offset(-10)
+    }
+  }
+  
+  func setCafeteriaData() {
+    dateLabel.text = CafeteriaCrawlManager.cafeteriaDayArray[0]
+    typeLabel1.text = CafeteriaCrawlManager.cafeteriaTypeArray[0]
+    menuLabel1.text = CafeteriaCrawlManager.cafeteriaMenuArray[0]
+    typeLabel2.text = CafeteriaCrawlManager.cafeteriaTypeArray[1]
+    menuLabel2.text = CafeteriaCrawlManager.cafeteriaMenuArray[1]
+  }
 
 }
 extension MondayViewController: PageComponentProtocol {

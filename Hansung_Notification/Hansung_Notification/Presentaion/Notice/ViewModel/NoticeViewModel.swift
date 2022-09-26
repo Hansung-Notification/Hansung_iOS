@@ -60,7 +60,7 @@ extension NoticeViewModel {
                         
                         let useableDoc = try docGetElementsTag.getElementsByTag("tr")
                         
-                        print(doc)
+                        //print(doc)
 
                         let title: Elements = try useableDoc.select(".td-subject")
                         for element in title {
