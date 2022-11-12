@@ -51,6 +51,7 @@
 		ECFE3FB128902C1300150699 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = ECFE3FB028902C1300150699 /* Alamofire */; };
 		ECFE3FB428902C2F00150699 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = ECFE3FB328902C2F00150699 /* SwiftSoup */; };
 		ECFE3FB928902E4D00150699 /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFE3FB828902E4D00150699 /* Notice.swift */; };
+		FA5D88B528F58752006F3CF4 /* CafeteriaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D88B428F58752006F3CF4 /* CafeteriaTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,7 @@
 		ECFE3F76288FB4F400150699 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ECFE3F7D288FB7AB00150699 /* BaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProtocol.swift; sourceTree = "<group>"; };
 		ECFE3FB828902E4D00150699 /* Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
+		FA5D88B428F58752006F3CF4 /* CafeteriaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +241,7 @@
 			children = (
 				ECFE3F55288ECB6100150699 /* View */,
 				ECFE3F52288ECB4F00150699 /* CrawlManager */,
+				FA5D88B428F58752006F3CF4 /* CafeteriaTableViewCell.swift */,
 			);
 			path = Cafeteria;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				EC9EDE252897F43500855ED7 /* WebKitView.swift in Sources */,
 				ECFE3FB928902E4D00150699 /* Notice.swift in Sources */,
 				ECFE3F4F288ECAFE00150699 /* NoticeView.swift in Sources */,
+				FA5D88B528F58752006F3CF4 /* CafeteriaTableViewCell.swift in Sources */,
 				EC9EDE1728955A5300855ED7 /* NetworkResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

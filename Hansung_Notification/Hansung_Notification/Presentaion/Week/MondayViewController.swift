@@ -12,76 +12,86 @@ import Then
 
 class MondayViewController: UIViewController {
   
-  private let dateLabel = UILabel().then {
-    $0.font = UIFont.systemFont(ofSize: 15)
-  }
-  
-  private let typeLabel1 = UILabel().then {
-    $0.font = UIFont.systemFont(ofSize: 20)
-  }
-  
-  private let menuLabel1 = UILabel().then {
-    $0.font = UIFont.systemFont(ofSize: 15)
-    $0.numberOfLines = 0
-    $0.sizeToFit()
-  }
-  
-  private let typeLabel2 = UILabel().then {
-    $0.font = UIFont.systemFont(ofSize: 20)
-  }
-  
-  private let menuLabel2 = UILabel().then {
-    $0.font = UIFont.systemFont(ofSize: 15)
-    $0.numberOfLines = 0
-    $0.sizeToFit()
+  var cafeteriaTableView = UITableView(frame: .zero, style: .grouped).then {
+    $0.register(CafeteriaTableViewCell.self, forCellReuseIdentifier: CafeteriaTableViewCell.identifier)
+    $0.estimatedRowHeight = 300
+    $0.rowHeight = UITableView.automaticDimension
+    $0.separatorStyle = .none
+    $0.showsVerticalScrollIndicator = false
+    $0.sectionFooterHeight = CGFloat.leastNormalMagnitude
+    $0.backgroundColor = .white
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    setupConstraints()
+    initView()
     CafeteriaCrawlManager.crawlCafeteria(viewController: self)
   }
+  
+  func initView() {
+    view.addSubview(cafeteriaTableView)
+    cafeteriaTableView.snp.makeConstraints { make in
+      make.trailing.leading.bottom.top.equalToSuperview()
+    }
+    cafeteriaTableView.delegate = self
+    cafeteriaTableView.dataSource = self
+  }
+}
 
-  func setupConstraints() {
-    [dateLabel, typeLabel1, menuLabel1, typeLabel2, menuLabel2].forEach { view.addSubview($0) }
-    dateLabel.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(10)
-      make.left.equalToSuperview().offset(10)
+extension MondayViewController: UITableViewDelegate, UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 2
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = cafeteriaTableView.dequeueReusableCell(withIdentifier: CafeteriaTableViewCell.identifier) as? CafeteriaTableViewCell else { return UITableViewCell() }
+    
+    if !CafeteriaCrawlManager.cafeteriaMenuNameArray.isEmpty {
+      if indexPath.row == 0 {
+        cell.titleLabel.text = CafeteriaCrawlManager.cafeteriaTypeArray[0]
+        cell.menuNameLabel.text = CafeteriaCrawlManager.cafeteriaMenuNameArray[0]
+        cell.menuPriceLabel.text = CafeteriaCrawlManager.cafeteriaMenuPriceArray[0]
+      }
+      else {
+        cell.titleLabel.text = CafeteriaCrawlManager.cafeteriaTypeArray[1]
+        cell.menuNameLabel.text = CafeteriaCrawlManager.cafeteriaMenuNameArray[1]
+        cell.menuPriceLabel.text = CafeteriaCrawlManager.cafeteriaMenuPriceArray[1]
+      }
+      cell.setAttributeString()
     }
     
-    typeLabel1.snp.makeConstraints { make in
-      make.top.equalTo(dateLabel.snp.bottom).offset(20)
-      make.left.equalToSuperview().offset(10)
+    return cell
+  }
+  
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    if !CafeteriaCrawlManager.cafeteriaDayArray.isEmpty {
+      return CafeteriaCrawlManager.cafeteriaDayArray[0]
     }
-    
-    menuLabel1.snp.makeConstraints { make in
-      make.top.equalTo(typeLabel1.snp.bottom).offset(20)
-      make.left.equalToSuperview().offset(10)
-      make.right.equalToSuperview().offset(-10)
-    }
-    
-    typeLabel2.snp.makeConstraints { make in
-      make.top.equalTo(menuLabel1.snp.bottom).offset(20)
-      make.left.equalToSuperview().offset(10)
-      make.right.equalToSuperview().offset(-10)
-    }
-    
-    menuLabel2.snp.makeConstraints { make in
-      make.top.equalTo(typeLabel2.snp.bottom).offset(20)
-      make.left.equalToSuperview().offset(10)
-      make.right.equalToSuperview().offset(-10)
+    else {
+      return ""
     }
   }
   
-  func setCafeteriaData() {
-    dateLabel.text = CafeteriaCrawlManager.cafeteriaDayArray[0]
-    typeLabel1.text = CafeteriaCrawlManager.cafeteriaTypeArray[0]
-    menuLabel1.text = CafeteriaCrawlManager.cafeteriaMenuArray[0]
-    typeLabel2.text = CafeteriaCrawlManager.cafeteriaTypeArray[1]
-    menuLabel2.text = CafeteriaCrawlManager.cafeteriaMenuArray[1]
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return 50
   }
+  
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let myLabel = UILabel().then {
+      $0.frame = CGRect(x: 20, y: 20, width: 320, height: 20)
+      $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+      $0.textColor = .darkGray
+      $0.text = self.tableView(tableView, titleForHeaderInSection: section)
+    }
 
+    let headerView = UIView().then {
+      $0.backgroundColor = .white
+    }
+    headerView.addSubview(myLabel)
+    return headerView
+  }
 }
+
 extension MondayViewController: PageComponentProtocol {
     var pageTitle: String { "월" }
 }
